@@ -1,131 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>Fashion Scroll</title>
+    <title>Progress Bar Fashion UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            scroll-behavior: smooth;
+        /* Custom progress bar transition */
+        .progress-bar {
+            transition: height 1s ease-in-out;
         }
 
-        .progress-dot {
-            height: 12px;
-            width: 12px;
-            background-color: gray;
+        /* Align the text with the progress bar */
+        .text-section {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+
+        /* Circle for progress steps */
+        .circle {
+            width: 10px;
+            height: 10px;
+            background-color: yellow;
             border-radius: 50%;
-            margin-bottom: 40px;
+            margin-right: 15px;
         }
 
-        .progress-dot.active {
-            background-color: #00ff00; /* Active color for progress */
-        }
-
-        .progress-line {
-            width: 2px;
-            background-color: gray;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .progress-container {
-            position: absolute;
-            left: -40px;
-            top: 0;
-            height: 80%;
+        /* Progress bar with proper spacing */
+        .progress-bar-container {
+            margin-right: 20px;
         }
     </style>
 </head>
-<body class="h-[800px] bg-[#efefef] max-w-[1200px] overflow-y-scroll">
+
+<body class="bg-white flex justify-center items-center h-screen">
 
     <!-- Main Container -->
-    <div class="flex my-36 mx-14 bg-white items-start gap-3 rounded-lg relative">
-        <!-- Progress Bar Container -->
-        <div class="progress-bar-container">
-            <div class="progress-container">
-                <div class="progress-line"></div>
-                <div class="progress-dot active"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
+    <div class="flex max-w-6xl w-11/12 mx-auto h-full items-center">
+
+        <!-- Progress bar background -->
+        <div class="relative h-full bg-gray-300 rounded-lg w-1 mx-auto progress-bar-container">
+            <!-- Progress bar active part -->
+            <div id="progress-bar" class="bg-yellow-400 rounded-lg w-1 progress-bar absolute top-0 left-0"
+                style="height: 33%;"></div>
+        </div>
+
+        <!-- Sidebar with progress bar and text -->
+        <div class="flex flex-col justify-around w-1/3 relative">
+            <div>
+
+                <!-- Men's Fashion -->
+                <div id="men-text" class="text-section">
+                    <div class="circle"></div>
+                    <div>
+                        <p class="text-black">- Men's Fashion -</p>
+                        <h2 class="my-3 text-2xl text-black font-bold">Trendsetting Styles for Him</h2>
+                        <p class="my-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        <button class="py-2 px-6 mt-4 rounded-3xl bg-slate-950 text-white text-base">Shop Now</button>
+                    </div>
+                </div>
+
+                <!-- Women's Fashion -->
+                <div id="women-text" class="text-section opacity-50 text-gray-500 mt-12">
+                    <div class="circle"></div>
+                    <div>
+                        <p>- Women's Fashion -</p>
+                        <h2 class="my-3 text-2xl font-bold">Elegant and Chic Outfits for Her</h2>
+                        <p class="my-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        <button class="py-2 px-6 mt-4 rounded-3xl bg-slate-950 text-white text-base">Shop Now</button>
+                    </div>
+                </div>
+
+                <!-- Kids' Fashion -->
+                <div id="kids-text" class="text-section opacity-50 text-gray-500 mt-12">
+                    <div class="circle"></div>
+                    <div>
+                        <p>- Kid's Fashion -</p>
+                        <h2 class="my-3 text-2xl font-bold">Fun and Comfortable Clothes for Kids</h2>
+                        <p class="my-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        <button class="py-2 px-6 mt-4 rounded-3xl bg-slate-950 text-white text-base">Shop Now</button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- left side with text -->
-        <div class="flex-1 p-14 h-[800px] items-start relative">
-            <div id="mens" class="section">
-                <p class="text-black">- Men's Fashion -</p>
-                <h2 class="my-3 text-2xl text-black font-bold">Trendsetting Styles for Him</h2>
-                <p class="my-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                <button class="py-2 px-6 mt-4 rounded-3xl bg-slate-950 text-white text-base">Shop Now</button>
-            </div>
-
-            <div id="womens" class="section mt-12 opacity-50 text-gray-500">
-                <p>- Women's Fashion -</p>
-                <h2 class="my-3 text-2xl font-bold">Elegant and Chic Outfits for Her</h2>
-                <p class="my-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                <button class="py-2 px-6 mt-4 rounded-3xl bg-slate-950 text-white text-base">Shop Now</button>
-            </div>
-
-            <div id="kids" class="section mt-12 opacity-50 text-gray-500">
-                <p>- Kid's Fashion -</p>
-                <h2 class="my-3 text-2xl font-bold">Fun and Comfortable Clothes for Kids</h2>
-                <p class="my-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                <button class="py-2 px-6 mt-4 rounded-3xl bg-slate-950 text-white text-base">Shop Now</button>
-            </div>
+        <!-- Right Side Image -->
+        <div class="w-2/3 ml-10">
+            <img id="main-image" src="./rear-view-man-making-graffiti-wall.jpg" alt="Fashion Image"
+                class="rounded-lg object-cover w-full h-full">
         </div>
 
-        <!-- right side image -->
-        <div id="imageContainer" class="flex-1 h-[400px] w-[400px]">
-            <img id="fashionImage" class="rounded-lg h-full w-full" src="./street-style-man.jpg" alt="">
-        </div>
     </div>
 
+    <!-- JavaScript for functionality -->
     <script>
-        const sections = document.querySelectorAll('.section');
-        const progressDots = document.querySelectorAll('.progress-dot');
-        const fashionImage = document.getElementById('fashionImage');
+        // Initial setup
+        let progressBar = document.getElementById('progress-bar');
+        let menText = document.getElementById('men-text');
+        let womenText = document.getElementById('women-text');
+        let kidsText = document.getElementById('kids-text');
+        let mainImage = document.getElementById('main-image');
 
-        window.addEventListener('scroll', () => {
-            const scrollPos = window.scrollY;
-            const sectionOffsets = [...sections].map(section => section.getBoundingClientRect().top + window.scrollY);
-            const windowHeight = window.innerHeight;
+        let currentStep = 0;
+        let intervalTime = 3000; // 3 seconds per step
 
-            sections.forEach((section, index) => {
-                const sectionTop = sectionOffsets[index];
-                const isVisible = scrollPos >= sectionTop - windowHeight / 2 && scrollPos < sectionTop + windowHeight / 2;
+        // Image sources for each section
+        const images = [
+            './rear-view-man-making-graffiti-wall.jpg',  // Men's fashion image
+            './street-style-man.jpg',                    // Women's fashion image
+            './stylish-dancer-against-graffiti-wall.jpg' // Kids' fashion image
+        ];
 
-                if (isVisible) {
-                    // Update text and opacity for active section
-                    section.classList.remove('opacity-50', 'text-gray-500');
-                    section.classList.add('opacity-100', 'text-black');
+        // Function to update progress bar, text, and image
+        function updateUI() {
+            currentStep = (currentStep + 1) % 3;
 
-                    // Change progress dot to active
-                    progressDots.forEach(dot => dot.classList.remove('active'));
-                    progressDots[index].classList.add('active');
+            if (currentStep === 0) {
+                // Men's Fashion
+                progressBar.style.height = '33%';
+                menText.classList.remove('opacity-50', 'text-gray-500');
+                menText.classList.add('text-black');
+                womenText.classList.add('opacity-50', 'text-gray-500');
+                kidsText.classList.add('opacity-50', 'text-gray-500');
+                mainImage.src = images[0];
+            } else if (currentStep === 1) {
+                // Women's Fashion
+                progressBar.style.height = '66%';
+                womenText.classList.remove('opacity-50', 'text-gray-500');
+                womenText.classList.add('text-black');
+                menText.classList.add('opacity-50', 'text-gray-500');
+                kidsText.classList.add('opacity-50', 'text-gray-500');
+                mainImage.src = images[1];
+            } else {
+                // Kids' Fashion
+                progressBar.style.height = '100%';
+                kidsText.classList.remove('opacity-50', 'text-gray-500');
+                kidsText.classList.add('text-black');
+                menText.classList.add('opacity-50', 'text-gray-500');
+                womenText.classList.add('opacity-50', 'text-gray-500');
+                mainImage.src = images[2];
+            }
+        }
 
-                    // Change the right-side image based on the active section
-                    switch (index) {
-                        case 0:
-                            fashionImage.src = './street-style-man.jpg'; // Men's image
-                            break;
-                        case 1:
-                            fashionImage.src = './rear-view-man-making-graffiti-wall.jpg'; // Women's image
-                            break;
-                        case 2:
-                            fashionImage.src = './stylish-dancer-against-graffiti-wall.jpg'; // Kid's image
-                            break;
-                    }
-                } else {
-                    section.classList.remove('opacity-100', 'text-black');
-                    section.classList.add('opacity-50', 'text-gray-500');
-                }
-            });
-        });
+        // Run the function every 3 seconds
+        setInterval(updateUI, intervalTime);
     </script>
 
 </body>
+
 </html>
