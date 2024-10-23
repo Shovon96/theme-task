@@ -38,13 +38,22 @@
 <body class="bg-white flex justify-center items-center h-screen">
 
     <!-- Main Container -->
-    <div class="flex max-w-6xl w-11/12 mx-auto h-full items-center">
+    <div class="flex max-w-6xl w-11/12 mx-auto p-8 h-[80vh] items-center bg-slate-400 rounded-2xl">
 
         <!-- Progress bar background -->
-        <div class="relative h-full bg-gray-300 rounded-lg w-1 mx-auto progress-bar-container">
+        <div class="relative h-[65vh] bg-gray-300 rounded-lg w-1 mx-auto">
+            <!-- Progress bar background -->
+            
+        
             <!-- Progress bar active part -->
-            <div id="progress-bar" class="bg-yellow-400 rounded-lg w-1 progress-bar absolute top-0 left-0"
-                style="height: 33%;"></div>
+            <div id="progress-bar" class="bg-yellow-400 rounded-lg w-1 absolute top-0 left-0" style="height: 33%;">
+                <!-- Top Dot (Active) -->
+                <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-yellow-400"></div>
+                <!-- Middle Dot (Active if needed) -->
+                <div class="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 rounded-full bg-yellow-400"></div>
+                <!-- Bottom Dot (Active if needed) -->
+                <div class="absolute -left-2 bottom-0 w-4 h-4 rounded-full bg-gray-300"></div>
+            </div>
         </div>
 
         <!-- Sidebar with progress bar and text -->
